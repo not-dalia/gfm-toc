@@ -1,0 +1,319 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 0 10px 10px 10px;
+	font-family: courier, monospace, sans-serif;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+	text-decoration: underline;
+	color: #8bc34a;
+	cursor: pointer;
+}
+
+a:hover {
+	color: #558b2f;
+}
+
+.day{
+	background-color: white;
+	color: #333;
+}
+
+.night{
+	background-color: #333;
+	color: white;
+}
+
+.app-container {
+	flex: 1;
+	width: 100%;
+}
+
+input[type=text], textarea {
+	padding: 5px 10px;
+	font-size: 1em;
+}
+
+.day input[type=text], .day textarea {
+	background: white;
+	border: 1px solid #666;
+	color: black;
+}
+
+
+.night input[type=text], .night textarea {
+	background: #444;
+	border: 1px solid #666;
+	color: white;
+}
+
+#header {
+	width: 100%;
+	text-align: center;
+}
+
+h1 {
+	flex: 1;
+}
+
+.container, .top-bar {
+	display: flex;
+	width: 100%;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.container .title {
+	padding: 5px;
+	color: #558b2f;
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: 0.0625em;
+	text-transform: uppercase;
+}
+
+.day .container .title {
+	color: #558b2f;
+}
+
+.night .container .title {
+	color: #8bc34a;
+}
+
+.top-bar-container {
+	padding: 10px;
+}
+
+.top-bar {
+	border: 1px dashed #8bc34a;
+	padding: 10px;
+	position: relative;
+
+}
+
+.top-bar .title {
+	padding: 5px;
+	color: #558b2f;
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: 0.0625em;
+	text-transform: uppercase;
+	position: absolute;
+	top: 0;
+	transform: translateY(-50%);
+}
+
+.day .top-bar .title {
+	background: white;
+	color: #558b2f;
+}
+
+.night .top-bar .title {
+	background: #333;
+	color: #8bc34a;
+}
+
+.left, .right {
+	flex: 1;
+	padding: 10px;
+	min-width: 300px;
+}
+
+
+.from-files, .from-url, .output-options {
+	font-size: 0.9rem;
+}
+
+.from-url {
+	margin-top: 15px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.output-options {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	align-items: center;
+}
+
+.day .output-options label {
+	margin-left: 5px;
+	color: #558b2f;
+}
+
+.night .output-options label {
+	margin-left: 5px;
+	color: #8bc34a;
+}
+
+.from-url input[type=text] {
+	height: 2.2em;
+	flex: 1;
+}
+
+.from-url button {
+	margin: 0;
+	margin-left: 5px;
+	padding: 5px 10px;
+	height: 2.4em;
+	border: none;
+	background: #8bc34a;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.from-url button:hover {
+	background: #558b2f;
+}
+
+#fetch-error {
+	color: red;
+	width: 100%;
+	margin-top: 10px;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.from-files .subtitle, .from-url .subtitle, .right .subtitle {
+	font-weight: bold;
+	width: 100%;
+	font-size: 0.9em;
+}
+
+.from-files a {
+	text-decoration: underline;
+	color: #8bc34a;
+	cursor: pointer;
+}
+
+.from-files a:hover {
+	color: #558b2f;
+}
+
+textarea {
+	min-height: 350px;
+	min-width: 350px;
+	flex: 1;
+	width: 100%;
+}
+
+.darkmode-switch-container {
+	display: flex;
+	flex-direction: row;
+	width: 60px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.darkmode-switch {
+	width: 30px;
+	height: 30px;
+	padding: 5px;
+	cursor: pointer;
+	margin: 0;
+	transition: all 0.5s;
+}
+
+.darkmode-switch.right {
+	border-radius: 0 38px 38px 0;
+	/* border: 2px #eee solid; */
+	border-left: none;
+}
+
+.darkmode-switch.left {
+	border-radius: 38px 0 0 38px;
+	/* border: 2px #eee solid; */
+	border-right: none;
+}
+
+.darkmode-switch .darkmode-icon {
+	width: 20px;
+	height: 20px;
+	display: block;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.darkmode-switch.left, .darkmode-switch.right {
+	min-width: initial;
+}
+
+.day .darkmode-switch.right {
+	background: #29b6f6;
+}
+
+.day .darkmode-switch.right .darkmode-icon{
+	background-image: url('images/sun.svg');
+}
+
+.day .darkmode-switch.left {
+	background: #bbb;
+}
+
+.day .darkmode-switch.left .darkmode-icon{
+	background-image: url('images/moon-grey.svg');
+}
+
+.night .darkmode-switch.right {
+	background: #bbb;
+}
+
+.night .darkmode-switch.right .darkmode-icon{
+	background-image: url('images/sun-grey.svg');
+}
+
+.night .darkmode-switch.left {
+	background: #3949ab;
+}
+
+.night .darkmode-switch.left .darkmode-icon{
+	background-image: url('images/moon.svg');
+}
+
+.btn-container {
+	width: 100%;
+	text-align: left;
+}
+
+button#generate {
+	margin: 0 10px;
+	font-size: 1.2em;
+	padding: 10px 30px;
+	border: none;
+	background: #8bc34a;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.footer {
+	text-align: center;
+	font-size: 0.8em;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.day .footer {
+	border-top: 1px solid #eee;
+}
+
+.night .footer {
+	border-top: 1px solid #555;
+}

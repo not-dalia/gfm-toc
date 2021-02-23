@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown TOC Generator</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="app-container">
+  <div id="header">
+    <h1>Markdown TOC generator</h1>
+  </div>
+  <div class="top-bar-container">
+    <div class="top-bar">
+      <div class="title">
+        Options
+      </div>
+      <div class="left">
+        <div class="from-files">
+          <div class="subtitle">Load from files:</div>
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35.md')">tr35</a> |
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35-numbers.md')">tr35-numbers</a> |
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35-keyboards.md')">tr35-keyboards</a> |
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35-info.md')">tr35-info</a> |
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35-general.md')">tr35-general</a> |
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35-dates.md')">tr35-dates</a> |
+          <a onclick="fetchText('https://raw.githubusercontent.com/unicode-org/cldr/master/docs/ldml/tr35-collation.md')">tr35-collation</a>
+        </div>
+        <div class="from-url">
+          <div class="subtitle">Load from URL:</div>
+          <form name="url-form" onsubmit="event.preventDefault(); fetchText();"></form>
+          <input id="url-field" type="text" placeholder="https://..."/>
+          <button onclick="fetchText()">Load</button>
+          <div id="fetch-error"></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="subtitle">Output:</div>
+        <div class="output-options">
+          <input id="include-unlinked" type="checkbox" name="include-unlinked"/>
+          <label for="include-unlinked">Include headers without anchors</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="left">
+      <div class="title">Input</div>
+      <textarea id="input"></textarea>
+    </div>
+    <div class="right">
+      <div class="title">Output</div>
+      <textarea id="output" readonly="readonly"></textarea>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button id="generate" onclick="generate()">Generate</button>
+  </div>
+</div>
+<div class="footer">
+  <div class="darkmode-switch-container">
+    <div class="darkmode-switch left" onclick="toggleTocDarkMode()">
+      <div class="darkmode-icon">
+
+      </div>
+    </div>
+    <div class="darkmode-switch right" onclick="toggleTocDarkMode()">
+      <div class="darkmode-icon">
+
+      </div>
+    </div>
+  </div>
+  <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</div>
+  
+<!-- partial -->
+  <script  src="./script.js"></script>
+  <script>
+    var tocPageMode = "day";
+    var tocApp = document.querySelector("body");
+    if (!tocApp.classList.contains(tocPageMode)) tocApp.classList.add(tocPageMode);
+    function toggleTocDarkMode() {
+      tocApp.classList.toggle("day");
+      tocApp.classList.toggle("night");
+    }
+  </script>
+</body>
+</html>
