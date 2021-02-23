@@ -10,7 +10,7 @@ html, body {
 
 body {
 	padding: 0 10px 10px 10px;
-	font-family: courier, "Courier New", monospace, sans-serif;
+	font-family: consolas, courier, monospace, sans-serif;
 	display: flex;
 	flex-direction: column;
 }
