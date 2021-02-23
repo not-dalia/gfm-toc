@@ -26,15 +26,16 @@ function generate() {
 			var elementsFromText = createElementFromHTML(escapedText);
 			var text = "";
 			var link = "";
-			Array.from(elementsFromText).forEach(function (el) {
-				if (!el.textContent) return;
+
+			for (var i = 0; i < elementsFromText.length; i++) {
+				var el = elementsFromText[i];
+				if (!el.textContent) continue;
 				if (el.nodeName == "A" && el.getAttribute("name")){
 					text += generateLink(el.textContent, el.getAttribute("name"));
 					link = generateLink(el.textContent, el.getAttribute("name"));
 				}
 				else text += el.textContent;
-			});
-			// var line = whitespace + "* " + generateLink(text, link);
+			}
 
 			var line = whitespace + "* " + text.replace(/(^\d+\.)(\s)/, "$1\xa0"); //replace space after digit with nbsp to stop github from rendering it as a numbered list
 			if (includeUnlinked || link) toc.push(line);

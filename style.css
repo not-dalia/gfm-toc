@@ -10,7 +10,7 @@ html, body {
 
 body {
 	padding: 0 10px 10px 10px;
-	font-family: courier, monospace, sans-serif;
+	font-family: courier, "Courier New", monospace, sans-serif;
 	display: flex;
 	flex-direction: column;
 }
@@ -213,6 +213,10 @@ textarea {
 	width: 100%;
 }
 
+textarea#output {
+	white-space: pre;
+}
+
 .darkmode-switch-container {
 	display: flex;
 	flex-direction: row;
@@ -252,7 +256,7 @@ textarea {
 }
 
 .darkmode-switch.left, .darkmode-switch.right {
-	min-width: initial;
+	min-width: auto;
 }
 
 .day .darkmode-switch.right {
