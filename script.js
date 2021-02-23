@@ -80,9 +80,10 @@ function findParent(parents, hashCount) {
 }
 
 function fetchText(url) {
-	document.getElementById('fetch-error').innerText = "";
-	document.getElementById('input').value = "";
-	document.getElementById('output').value = "";
+	document.getElementById("fetch-error").innerText = "";
+	document.getElementById("input").value = "";
+	document.getElementById("output").value = "";
+	document.getElementById("preview").innerHTML = "";
 	
 	var request = new XMLHttpRequest();
 	url = url || document.getElementById('url-field').value;
