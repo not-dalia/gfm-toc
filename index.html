@@ -51,14 +51,21 @@
     <div class="left">
       <div class="title">Input</div>
       <textarea id="input"></textarea>
+      <div class="btn-container">
+        <button id="generate" onclick="generate()">Generate</button>
+      </div>
     </div>
-    <div class="right">
+    <div class="middle">
       <div class="title">Output</div>
       <textarea id="output" readonly="readonly"></textarea>
+      <div class="btn-container">
+        <button id="copy" onclick="copyToClipboard()">Copy</button>
+      </div>
     </div>
-  </div>
-  <div class="btn-container">
-    <button id="generate" onclick="generate()">Generate</button>
+    <div class="right">
+      <div class="title">Preview</div>
+      <div id="preview"></div>
+    </div>
   </div>
 </div>
 <div class="footer">
@@ -74,13 +81,17 @@
       </div>
     </div>
   </div>
-  <div>Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+  <div>
+    Created by <a target="_blank" href="https://github.com/not-dalia">Dalia</a> | 
+    Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </div>
   
 <!-- partial -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script  src="./script.js"></script>
+
   <script>
-    var tocPageMode = "day";
+    var tocPageMode = "night";
     var tocApp = document.querySelector("body");
     if (!tocApp.classList.contains(tocPageMode)) tocApp.classList.add(tocPageMode);
     function toggleTocDarkMode() {
@@ -88,5 +99,6 @@
       tocApp.classList.toggle("night");
     }
   </script>
+
 </body>
 </html>

@@ -15,14 +15,24 @@ body {
 	flex-direction: column;
 }
 
-a {
+.night a {
 	text-decoration: underline;
 	color: #8bc34a;
 	cursor: pointer;
 }
 
-a:hover {
+.night a:hover {
 	color: #558b2f;
+}
+
+.day a {
+	text-decoration: underline;
+	color: #558b2f;
+	cursor: pointer;
+}
+
+.day a:hover {
+	color: #8bc34a;
 }
 
 .day{
@@ -124,10 +134,10 @@ h1 {
 	color: #8bc34a;
 }
 
-.left, .right {
+.left, .right, .middle {
 	flex: 1;
 	padding: 10px;
-	min-width: 300px;
+	min-width: 250px;
 }
 
 
@@ -196,25 +206,32 @@ h1 {
 	font-size: 0.9em;
 }
 
-.from-files a {
-	text-decoration: underline;
-	color: #8bc34a;
-	cursor: pointer;
-}
-
-.from-files a:hover {
-	color: #558b2f;
-}
-
 textarea {
 	min-height: 350px;
-	min-width: 350px;
+	min-width: 250px;
 	flex: 1;
 	width: 100%;
 }
 
 textarea#output {
 	white-space: pre;
+}
+
+#preview {
+	height: 350px;
+	overflow-y: auto;
+	border: 1px solid #666;
+	font-size: 0.8em;
+	padding: 10px;
+}
+
+#preview ul {
+	padding: 0 1.2em;
+	margin: 0;
+}
+
+.night #preview {
+	background: #444;
 }
 
 .darkmode-switch-container {
@@ -294,15 +311,17 @@ textarea#output {
 .btn-container {
 	width: 100%;
 	text-align: left;
+	margin: 10px 0;
+
 }
 
-button#generate {
-	margin: 0 10px;
-	font-size: 1.2em;
-	padding: 10px 30px;
+button#generate, button#copy {
+	font-size: 0.9em;
+	padding: 10px 20px;
 	border: none;
 	background: #8bc34a;
 	color: white;
+	text-transform: uppercase;
 	font-weight: bold;
 	cursor: pointer;
 }

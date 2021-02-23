@@ -1,5 +1,8 @@
 var tabLength = 2;
 var tabCharacter = " ";
+marked.setOptions({
+	gfm: true
+});
 
 function generate() {
 	document.getElementById('fetch-error').innerText = "";
@@ -22,7 +25,6 @@ function generate() {
 			var singleTab = new Array(tabLength + 1).join(tabCharacter);
 			var whitespace = new Array(tabCount + 1).join(singleTab);
 			var escapedText = escapeCodeblocks(matches[2]);
-			console.log(escapedText);
 			var elementsFromText = createElementFromHTML(escapedText);
 			var text = "";
 			var link = "";
@@ -42,8 +44,10 @@ function generate() {
 			
 		}
 	} while (matches);
-	// console.log(toc.join('\n'));
 	document.getElementById("output").value = toc.join("\n");
+	document.getElementById("preview").innerHTML =
+	marked(toc.join("\n"));
+
 }
 
 function generateLink(text, link) {
@@ -107,6 +111,26 @@ function populateText(text) {
 function showFetchError() {
 	document.getElementById('fetch-error').innerText = "Error loading URL"
 }
+
+function copyToClipboard(id) {
+	const el = document.createElement('textarea');
+	el.value = document.getElementById(id || "output").value;
+	el.setAttribute('readonly', '');
+	el.style.position = 'absolute';
+	el.style.left = '-9999px';
+	document.body.appendChild(el);
+	const selected =
+		document.getSelection().rangeCount > 0 ?
+		document.getSelection().getRangeAt(0) :
+		false;
+	el.select();
+	document.execCommand('copy');
+	document.body.removeChild(el);
+	if (selected) {
+		document.getSelection().removeAllRanges();
+		document.getSelection().addRange(selected);
+	}
+};
 
 var parentLevel = function (hashCount, tabCount) {
 	return {
