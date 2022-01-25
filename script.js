@@ -12,6 +12,7 @@ function generate() {
 	var toc = [];
 	var parents = [parentLevel(0, -1)];
 	var includeUnlinked = document.getElementById("include-unlinked").checked;
+	var createLinks = document.getElementById("create-links").checked;
 
 	do {
 		matches = regex.exec(inputText);
@@ -38,7 +39,11 @@ function generate() {
 				}
 				else text += el.textContent;
 			}
-
+			
+			if (!link && createLinks) {
+				link = generateLink(text, linkify(text));
+				text = generateLink(text, linkify(text));
+			}
 			var line = whitespace + "* " + text.replace(/(^\d+\.)(\s)/, "$1\xa0"); //replace space after digit with nbsp to stop github from rendering it as a numbered list
 			if (includeUnlinked || link) toc.push(line);
 			
@@ -132,6 +137,13 @@ function copyToClipboard(id) {
 		document.getSelection().addRange(selected);
 	}
 };
+
+function linkify(text) {
+  return text
+    .toLowerCase()
+    .replace(/\s/g, '-')
+    .replace(/[^0-9a-z.-]/g, '');
+}
 
 var parentLevel = function (hashCount, tabCount) {
 	return {
