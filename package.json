@@ -1,0 +1,26 @@
+{
+  "name": "@not-dalia/gfm-toc",
+  "version": "1.0.0",
+  "description": "Demo: [https://gfmtoc.relevant.space](https://gfmtoc.relevant.space)",
+  "main": "generate.js",
+  "scripts": {
+    "test": "tap --lines 50 --functions 50 --branches 50 --statements 50 tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/not-dalia/gfm-toc.git"
+  },
+  "author": "not-dalia <32544547+not-dalia@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/not-dalia/gfm-toc/issues"
+  },
+  "homepage": "https://github.com/not-dalia/gfm-toc#readme",
+  "dependencies": {
+    "jsdom": "^19.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "tap": "^16.0.1"
+  }
+}
