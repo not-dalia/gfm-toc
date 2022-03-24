@@ -11,3 +11,13 @@ t.test('Basic Test', t => {
 
     t.end();
 });
+
+t.test('Escaping Test', t => {
+    const out = generateGfmToc('### <a name="foo">bar `baz`</a>');
+
+    expect(out).to.deep.equal([
+        '* [bar `baz`](#foo)'
+    ]);
+
+    t.end();
+});

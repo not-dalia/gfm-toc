@@ -1,6 +1,21 @@
+const { generateGfmToc } = require("./generate");
+
 marked.setOptions({
 	gfm: true
 });
+
+function generate() {
+	document.getElementById('fetch-error').innerText = "";
+	var inputText = document.getElementById("input").value;
+	var includeUnlinked = document.getElementById("include-unlinked").checked;
+	var createLinks = document.getElementById("create-links").checked;
+
+	const toc = generateGfmToc(inputText, {includeUnlinked, createLinks});
+
+	document.getElementById("output").value = toc.join("\n");
+	document.getElementById("preview").innerHTML =
+	marked(toc.join("\n"));
+}
 
 function fetchText(url) {
 	document.getElementById("fetch-error").innerText = "";

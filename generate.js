@@ -2,6 +2,9 @@
 var tabLength = 2;
 var tabCharacter = " ";
 
+// true if we have 'module' (and are likely inside node.js)
+const hasModule = (typeof module) === 'object';
+
 let dom = null;
 /**
  * For Node.js, make up a document
@@ -15,6 +18,15 @@ function getDocument() {
 
 var document = document || getDocument();
 
+/**
+ * Markdown TOC generator
+ *
+ * @param {String} inputText input Markdown text
+ * @param {Object} opts
+ * @param {boolean} opts.includeUnlinked Include headers without anchors
+ * @param {boolean} opts.createLinks Create links for headers without anchors
+ * @returns {String[]} ToC Markdown lines
+ */
 function generateGfmToc(inputText, opts) {
 	var regex = /^(\#\#+)\s(.+)$/gm;
 	var matches;
@@ -59,20 +71,6 @@ function generateGfmToc(inputText, opts) {
 	return toc;
 }
 
-function generate() {
-	document.getElementById('fetch-error').innerText = "";
-	var inputText = document.getElementById("input").value;
-	var includeUnlinked = document.getElementById("include-unlinked").checked;
-	var createLinks = document.getElementById("create-links").checked;
-
-	const toc = generateGfmToc(inputText, {includeUnlinked, createLinks});
-
-	document.getElementById("output").value = toc.join("\n");
-	document.getElementById("preview").innerHTML =
-	marked(toc.join("\n"));
-
-}
-
 function generateLink(text, link) {
 	if (!link) return text;
 	return "[" + text + "](#" + link + ")";
@@ -91,6 +89,11 @@ function escapeCodeblocks(text) {
 }
 
 function encodeHTML(htmlString) {
+    if (hasModule) {
+        // Node.js way
+        const escape = require('escape-html');
+        return escape(htmlString);
+    }
 	var div = document.createElement("div");
 	div.innerText = htmlString;
 	return div.innerHTML;
@@ -117,7 +120,7 @@ var parentLevel = function (hashCount, tabCount) {
 };
 
 // export, if we have a module
-if ((typeof module) === 'object') {
+if (hasModule) {
     module.exports = { generateGfmToc };
 }
 
