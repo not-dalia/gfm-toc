@@ -13,7 +13,7 @@ body {
 	font-family: consolas, courier, monospace, sans-serif;
 	display: flex;
 	flex-direction: column;
-	transition: background-color 0.1s ease;
+	transition: background-color 0.1s, color 0.1s;
 }
 
 .night a {
@@ -93,6 +93,7 @@ h1 {
 	font-weight: 400;
 	letter-spacing: 0.0625em;
 	text-transform: uppercase;
+	transition: background-color 0.1s, color 0.1s;
 }
 
 .day .container .title {
@@ -124,6 +125,7 @@ h1 {
 	position: absolute;
 	top: 0;
 	transform: translateY(-50%);
+	transition: background-color 0.1s, color 0.1s;
 }
 
 .day .top-bar .title {
@@ -166,11 +168,13 @@ h1 {
 .day .output-options label {
 	margin-left: 5px;
 	color: #558b2f;
+	transition: background-color 0.1s, color 0.1s;
 }
 
 .night .output-options label {
 	margin-left: 5px;
 	color: #8bc34a;
+	transition: background-color 0.1s, color 0.1s;
 }
 
 .from-url input[type=text] {
@@ -225,6 +229,7 @@ textarea#output {
 	border: 1px solid #666;
 	font-size: 0.8em;
 	padding: 10px;
+	transition: background-color 0.1s;
 }
 
 #preview ul {
