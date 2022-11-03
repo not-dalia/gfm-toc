@@ -13,6 +13,7 @@ body {
 	font-family: consolas, courier, monospace, sans-serif;
 	display: flex;
 	flex-direction: column;
+	transition: background-color 0.1s ease;
 }
 
 .night a {
@@ -53,6 +54,7 @@ body {
 input[type=text], textarea {
 	padding: 5px 10px;
 	font-size: 1em;
+	transition: background-color 0.1s ease;
 }
 
 .day input[type=text], .day textarea {
@@ -248,7 +250,7 @@ textarea#output {
 	padding: 5px;
 	cursor: pointer;
 	margin: 0;
-	transition: all 0.5s;
+	transition: all 0.3s;
 }
 
 .darkmode-switch.right {

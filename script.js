@@ -71,4 +71,8 @@ function copyToClipboard(id) {
 	}
 };
 
+global.copyToClipboard = copyToClipboard
+global.generate = generate
+global.fetchText = fetchText
+
 
