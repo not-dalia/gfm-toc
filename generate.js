@@ -109,7 +109,7 @@ function linkify(text) {
 	return text
 	  .toLowerCase()
 	  .replace(/\s/g, '-')
-	  .replace(/[^0-9a-z.-]/g, '');
+	  .replace(/[^0-9a-z-]/g, '');
 }
 
 var parentLevel = function (hashCount, tabCount) {
